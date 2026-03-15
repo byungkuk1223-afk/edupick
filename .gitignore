@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .next/
+*.tsbuildinfo
 .env
 .env.local
 .env.*.local
@@ -9,3 +10,5 @@ dist/
 coverage/
 .DS_Store
 Thumbs.db
+images/
+apps/web/images/character.png

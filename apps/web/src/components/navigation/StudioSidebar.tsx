@@ -60,7 +60,7 @@ export function StudioSidebar() {
       <div className="px-5 pt-5">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg font-bold tracking-[-0.05em] text-text-primary">
-            Edu<span className="text-primary">Pick</span>
+            학원<span className="text-primary">가</span>
           </span>
         </Link>
         <p className="mt-1 text-[11px] font-semibold tracking-[0.14em] text-text-secondary">

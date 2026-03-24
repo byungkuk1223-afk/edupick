@@ -73,7 +73,7 @@ export function PublicHeader({
           onClick={handleNavigate}
         >
           <p className="display-font text-lg font-bold tracking-[-0.04em] text-text-primary">
-            EduPick
+            학원가
           </p>
           <p className="text-xs text-text-secondary">
             {subtitle}

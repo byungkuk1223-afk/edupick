@@ -239,7 +239,7 @@ export default function HomePage() {
 
               <p className="mt-5 max-w-xl text-sm leading-7 text-text-secondary sm:text-base sm:leading-8 lg:text-lg">
                 {trimSentenceEnding(
-                  "EduPick 하나면 학원 탐색부터 신청, 일정 확인, 원비 납부까지 한 곳에서 할 수 있어요."
+                  "학원가 하나면 학원 탐색부터 신청, 일정 확인, 원비 납부까지 한 곳에서 할 수 있어요."
                 )}
               </p>
 
@@ -346,7 +346,7 @@ export default function HomePage() {
               CLEAR ENTRY
             </p>
             <h2 className="display-font mt-3 text-3xl font-bold tracking-[-0.06em] text-text-primary sm:text-4xl">
-              학부모, 학생, 강사 모두를 위한 EduPick
+              학부모, 학생, 강사 모두를 위한 학원가
             </h2>
             <p className="mt-4 text-sm leading-7 text-text-secondary sm:text-base sm:leading-8">
               학부모는 아이 학원 탐색과 일정 관리를, 학생은 내 스케줄 확인과 위시리스트 공유를, 강사는 학원 운영 관리를 한 곳에서 할 수 있어요.

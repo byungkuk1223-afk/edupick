@@ -19,10 +19,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "에듀픽 - 학원 탐색부터 결제까지",
+  title: "학원가 - 학원 탐색부터 결제까지",
   description:
     "우리 아이 학원, 한눈에 비교하고 원클릭 신청. 학원 탐색, 일정관리, 결제, 공지를 하나로 통합한 레슨 플랫폼.",
-  keywords: ["학원", "레슨", "학원 탐색", "학원 결제", "에듀픽", "edupick"],
+  keywords: ["학원", "레슨", "학원 탐색", "학원 결제", "학원가", "academy-go"],
 };
 
 export const viewport: Viewport = {

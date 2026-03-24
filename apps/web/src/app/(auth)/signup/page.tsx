@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { startTransition, useMemo, useState, type FormEvent } from "react";
+import { startTransition, useMemo, useState, Suspense, type FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Lock, Mail, MessageCircle, Phone, Sparkles, User } from "lucide-react";
 import { PublicHeader } from "@/components/navigation/PublicHeader";
@@ -24,7 +24,7 @@ interface RegisterResponse {
   };
 }
 
-export default function SignupPage() {
+function SignupContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const login = useAuth((state) => state.login);
@@ -269,5 +269,13 @@ export default function SignupPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense>
+      <SignupContent />
+    </Suspense>
   );
 }

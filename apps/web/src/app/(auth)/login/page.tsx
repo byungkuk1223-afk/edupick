@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { startTransition, useMemo, useState, type FormEvent } from "react";
+import { startTransition, useMemo, useState, Suspense, type FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Lock, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { PublicHeader } from "@/components/navigation/PublicHeader";
@@ -24,7 +24,7 @@ interface LoginResponse {
   };
 }
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const login = useAuth((state) => state.login);
@@ -252,5 +252,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginContent />
+    </Suspense>
   );
 }

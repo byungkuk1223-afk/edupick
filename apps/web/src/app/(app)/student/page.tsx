@@ -73,7 +73,7 @@ export default function StudentHomePage() {
   if (!user) {
     return (
       <div className="px-4 py-8">
-        <LoginRequiredCard message="로그인하면 내 수업 일정과 위시리스트를 볼 수 있어요." />
+        <LoginRequiredCard description="로그인하면 내 수업 일정과 위시리스트를 볼 수 있어요." />
       </div>
     );
   }

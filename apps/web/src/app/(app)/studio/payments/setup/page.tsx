@@ -170,7 +170,7 @@ export default function PaymentSetupPage() {
   if (!user) {
     return (
       <div className="p-6">
-        <LoginRequiredCard message="학원 계정으로 로그인하세요." />
+        <LoginRequiredCard description="학원 계정으로 로그인하세요." />
       </div>
     );
   }

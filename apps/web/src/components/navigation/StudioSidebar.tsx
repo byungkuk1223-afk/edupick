@@ -12,6 +12,7 @@ import {
   LayoutDashboard,
   Megaphone,
   UsersRound,
+  WalletCards,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
@@ -35,7 +36,8 @@ const studioNav = [
   {
     section: "수납·정산",
     items: [
-      { href: "/studio/payments", label: "원비 수납", icon: CreditCard },
+      { href: "/studio/payments/setup", label: "결제 수납 설정", icon: CreditCard },
+      { href: "/studio/payments", label: "수납 현황", icon: WalletCards },
       { href: "/studio/payments/reminders", label: "미납 알림", icon: Megaphone },
       { href: "/studio/statistics", label: "매출 통계", icon: BarChart3 },
     ],

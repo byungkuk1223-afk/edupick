@@ -13,6 +13,7 @@ datasource db {
 enum Role {
   PARENT
   INSTRUCTOR
+  STUDENT
 }
 
 enum AcademyStatus {
@@ -101,6 +102,7 @@ model User {
   updatedAt       DateTime @updatedAt
 
   children              Child[]
+  linkedChild           Child?               @relation("StudentChild")
   ownedAcademies        Academy[]            @relation("AcademyOwner")
   instructedClasses     Class[]              @relation("ClassInstructor")
   enrollments           Enrollment[]
@@ -119,6 +121,7 @@ model User {
 model Child {
   id            String    @id @default(uuid()) @db.Uuid
   parentId      String    @db.Uuid
+  studentUserId String?   @unique @db.Uuid
   name          String
   birthDate     DateTime?
   schoolName    String?
@@ -130,6 +133,7 @@ model Child {
   updatedAt     DateTime  @updatedAt
 
   parent                User                 @relation(fields: [parentId], references: [id], onDelete: Cascade)
+  studentUser           User?                @relation("StudentChild", fields: [studentUserId], references: [id])
   enrollments           Enrollment[]
   fundingParticipations FundingParticipant[]
   wishes                Wish[]

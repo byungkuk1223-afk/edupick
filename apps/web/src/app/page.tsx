@@ -19,6 +19,7 @@ import characterSoccer from "../../images/characters/edupick_character_2.png";
 import characterReader from "../../images/characters/edupick_character_3.png";
 import characterMartial from "../../images/characters/edupick_character_4.png";
 import characterTeacher from "../../images/characters/edupick_character_5.png";
+import characterStudent from "../../images/characters/edupick_character_6.png";
 import characterLaptop from "../../images/characters/edupick_character_8.png";
 
 const introNavItems = [
@@ -106,6 +107,23 @@ const journeyCards = [
     panelTone: "bg-[linear-gradient(180deg,#ffffff_0%,#edf6ff_100%)]",
     sprite: characterTeacher,
     spriteClassName: "right-[8px] top-[10px] w-[108px] sm:right-[12px] sm:top-[12px] sm:w-[128px]",
+  },
+  {
+    id: "student",
+    label: "STUDENT FLOW",
+    title: "학생은 내 일정을 스스로 보고 하고 싶은 수업을 공유할 수 있어요",
+    description:
+      "부모님이 등록한 수업 일정을 확인하고, 직접 담아둔 위시리스트를 부모님께 공유할 수 있어요.",
+    steps: [
+      "내 수업 일정과 준비물을 직접 확인할 수 있어요.",
+      "하고 싶은 수업을 위시리스트에 담아둘 수 있어요.",
+      "담아둔 수업을 부모님께 바로 공유할 수 있어요.",
+    ],
+    ctaHref: "/signup?role=STUDENT",
+    ctaLabel: "학생으로 시작하기",
+    panelTone: "bg-[linear-gradient(180deg,#f3fff6_0%,#e8f8ee_100%)]",
+    sprite: characterStudent,
+    spriteClassName: "right-[6px] top-[10px] w-[108px] sm:right-[12px] sm:top-[12px] sm:w-[128px]",
   },
   {
     id: "studio",
@@ -328,11 +346,10 @@ export default function HomePage() {
               CLEAR ENTRY
             </p>
             <h2 className="display-font mt-3 text-3xl font-bold tracking-[-0.06em] text-text-primary sm:text-4xl">
-              학부모와 강사 모두를 위한 EduPick
+              학부모, 학생, 강사 모두를 위한 EduPick
             </h2>
             <p className="mt-4 text-sm leading-7 text-text-secondary sm:text-base sm:leading-8">
-              학부모는 아이 학원 탐색 및 일정 관리를 간편하게 할 수 있어요. 강사는
-              학원 운영보다는 아이들에게 집중할 수 있어요.
+              학부모는 아이 학원 탐색과 일정 관리를, 학생은 내 스케줄 확인과 위시리스트 공유를, 강사는 학원 운영 관리를 한 곳에서 할 수 있어요.
             </p>
           </div>
 
@@ -407,39 +424,68 @@ export default function HomePage() {
             aria-hidden="true"
             className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.12),transparent_18%),radial-gradient(circle_at_86%_78%,rgba(78,156,255,0.22),transparent_22%)]"
           />
-          <div className="relative max-w-[680px]">
+          <div className="relative">
             <p className="text-xs font-semibold tracking-[0.18em] text-white/60">
               START HERE
             </p>
             <h2 className="display-font mt-3 text-3xl font-bold tracking-[-0.06em] text-white sm:text-4xl">
-              학원 찾기부터 원비 납부까지, 한 번에 할 수 있어요
+              나에게 맞는 방식으로 시작하세요
             </h2>
             <p className="mt-4 text-sm leading-7 text-white/72 sm:text-base sm:leading-8">
               {trimSentenceEnding(
-                "우리 아이에게 맞는 수업을 찾고, 일정과 원비까지 편하게 챙겨보세요."
+                "역할에 맞는 화면과 기능으로 바로 시작할 수 있어요."
               )}
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <CtaLink href="/signup">
-                학부모로 시작하기
-                <ArrowRight size={18} />
-              </CtaLink>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              <Link
+                href="/signup"
+                className="group flex flex-col gap-3 rounded-[28px] border border-white/12 bg-white/10 p-5 backdrop-blur-sm transition-colors hover:bg-white/16"
+              >
+                <span className="text-xs font-semibold tracking-[0.16em] text-white/50">학부모</span>
+                <p className="text-base font-semibold leading-snug text-white">
+                  아이 학원 일정과 원비를 한 곳에서 관리해요
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                  학부모로 시작하기 <ArrowRight size={14} />
+                </span>
+              </Link>
+              <Link
+                href="/signup?role=STUDENT"
+                className="group flex flex-col gap-3 rounded-[28px] border border-white/12 bg-white/10 p-5 backdrop-blur-sm transition-colors hover:bg-white/16"
+              >
+                <span className="text-xs font-semibold tracking-[0.16em] text-white/50">학생</span>
+                <p className="text-base font-semibold leading-snug text-white">
+                  내 수업 일정 확인하고 하고싶은 거 부모님께 공유해요
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400">
+                  학생으로 시작하기 <ArrowRight size={14} />
+                </span>
+              </Link>
+              <Link
+                href="/instructor"
+                className="group flex flex-col gap-3 rounded-[28px] border border-white/12 bg-white/10 p-5 backdrop-blur-sm transition-colors hover:bg-white/16"
+              >
+                <span className="text-xs font-semibold tracking-[0.16em] text-white/50">강사·원장</span>
+                <p className="text-base font-semibold leading-snug text-white">
+                  반, 원생, 원비를 한 화면에서 운영해요
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-400">
+                  강사 전용 보기 <ArrowRight size={14} />
+                </span>
+              </Link>
+            </div>
+
+            <div className="mt-6">
               <CtaLink
                 href="/login"
                 variant="secondary"
                 className="border-white/16 bg-white/10 text-white hover:bg-white/16"
               >
-                로그인
+                이미 계정이 있으신가요? 로그인
               </CtaLink>
             </div>
           </div>
-
-          <CharacterSprite
-            src={characterMartial}
-            className="float-gentle-delayed bottom-[-44px] right-[-16px] w-[138px] opacity-90 drop-shadow-[0_18px_30px_rgba(24,35,56,0.34)] sm:w-[168px] lg:w-[192px]"
-            sizes="(min-width: 1024px) 160px, 18vw"
-          />
         </section>
       </div>
     </main>

@@ -1,16 +1,23 @@
-export type UserRole = "PARENT" | "INSTRUCTOR";
-export type ViewRole = "PARENT" | "INSTRUCTOR";
+export type UserRole = "PARENT" | "INSTRUCTOR" | "STUDENT";
+export type ViewRole = "PARENT" | "INSTRUCTOR" | "STUDENT";
 
 export function parseRoleParam(role: string | null | undefined): ViewRole {
-  return role === "INSTRUCTOR" ? "INSTRUCTOR" : "PARENT";
+  if (role === "INSTRUCTOR") return "INSTRUCTOR";
+  if (role === "STUDENT") return "STUDENT";
+  return "PARENT";
 }
 
 export function normalizeRole(role: UserRole | null | undefined): ViewRole {
-  return role === "INSTRUCTOR" ? "INSTRUCTOR" : "PARENT";
+  if (role === "INSTRUCTOR") return "INSTRUCTOR";
+  if (role === "STUDENT") return "STUDENT";
+  return "PARENT";
 }
 
 export function getRoleLabel(role: UserRole | null | undefined) {
-  return normalizeRole(role) === "INSTRUCTOR" ? "강사" : "학부모";
+  const r = normalizeRole(role);
+  if (r === "INSTRUCTOR") return "강사";
+  if (r === "STUDENT") return "학생";
+  return "학부모";
 }
 
 export function isOperatorRole(role: UserRole | null | undefined) {
@@ -18,5 +25,8 @@ export function isOperatorRole(role: UserRole | null | undefined) {
 }
 
 export function getRoleHomePath(role: UserRole | null | undefined) {
-  return normalizeRole(role) === "INSTRUCTOR" ? "/studio" : "/home";
+  const r = normalizeRole(role);
+  if (r === "INSTRUCTOR") return "/studio";
+  if (r === "STUDENT") return "/student";
+  return "/home";
 }

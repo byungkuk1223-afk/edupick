@@ -36,23 +36,36 @@ function SignupContent() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const copy = useMemo(
-    () =>
-      requestedRole === "INSTRUCTOR"
-        ? {
-            badge: "강사 전용",
-            title: "강사 계정 만들기",
-            description: "가입이 완료되면 스튜디오 화면으로 바로 이동해 운영을 시작할 수 있습니다.",
-            helper: "강사 계정으로 학원, 반, 원생, 원비 관리 기능을 바로 사용할 수 있습니다.",
-          }
-        : {
-            badge: "학부모 메인",
-            title: "학부모 계정 만들기",
-            description: "가입 후 바로 학원 탐색, 신청, 일정 확인, 원비 납부를 시작할 수 있습니다.",
-            helper: "이메일이나 카카오 계정으로 편하게 가입할 수 있습니다.",
-          },
-    [requestedRole]
-  );
+  const copy = useMemo(() => {
+    if (requestedRole === "INSTRUCTOR") {
+      return {
+        badge: "강사 전용",
+        title: "강사 계정 만들기",
+        description: "가입이 완료되면 스튜디오 화면으로 바로 이동해 운영을 시작할 수 있습니다.",
+        helper: "강사 계정으로 학원, 반, 원생, 원비 관리 기능을 바로 사용할 수 있습니다.",
+        cardLeft: { badge: "일반 회원가입", body: "카카오 계정이 없어도 바로 가입할 수 있습니다" },
+        cardRight: { badge: "카카오 시작", body: "원하는 진입 경로에 맞춰 역할을 바로 생성합니다" },
+      };
+    }
+    if (requestedRole === "STUDENT") {
+      return {
+        badge: "학생",
+        title: "학생 계정 만들기",
+        description: "가입 후 내 수업 일정을 직접 확인하고, 하고 싶은 수업을 부모님께 공유할 수 있어요.",
+        helper: "학생 계정으로 수업 일정 확인과 위시리스트 공유 기능을 사용할 수 있어요.",
+        cardLeft: { badge: "일정 확인", body: "부모님이 등록한 수업 일정을 직접 볼 수 있어요" },
+        cardRight: { badge: "위시리스트 공유", body: "하고 싶은 수업을 담아 부모님께 바로 공유해요" },
+      };
+    }
+    return {
+      badge: "학부모 메인",
+      title: "학부모 계정 만들기",
+      description: "가입 후 바로 학원 탐색, 신청, 일정 확인, 원비 납부를 시작할 수 있습니다.",
+      helper: "이메일이나 카카오 계정으로 편하게 가입할 수 있습니다.",
+      cardLeft: { badge: "일반 회원가입", body: "카카오 계정이 없어도 바로 가입할 수 있습니다" },
+      cardRight: { badge: "카카오 시작", body: "원하는 진입 경로에 맞춰 역할을 바로 생성합니다" },
+    };
+  }, [requestedRole]);
 
   async function handleSignup(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -130,18 +143,18 @@ function SignupContent() {
             <div className="grid gap-3 sm:grid-cols-2">
               <Card className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]">
                 <p className="text-xs font-semibold tracking-[0.12em] text-text-secondary">
-                  일반 회원가입
+                  {copy.cardLeft.badge}
                 </p>
                 <p className="mt-3 text-base font-semibold text-text-primary">
-                  카카오 계정이 없어도 바로 가입할 수 있습니다
+                  {copy.cardLeft.body}
                 </p>
               </Card>
               <Card className="bg-[linear-gradient(180deg,#ffffff_0%,#fff9dd_100%)]">
                 <p className="text-xs font-semibold tracking-[0.12em] text-text-secondary">
-                  카카오 시작
+                  {copy.cardRight.badge}
                 </p>
                 <p className="mt-3 text-base font-semibold text-text-primary">
-                  원하는 진입 경로에 맞춰 역할을 바로 생성합니다
+                  {copy.cardRight.body}
                 </p>
               </Card>
             </div>

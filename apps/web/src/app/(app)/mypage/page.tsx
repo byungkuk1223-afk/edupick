@@ -11,6 +11,7 @@ import {
   LogOut,
   Megaphone,
   Settings,
+  Sparkles,
   User,
   UsersRound,
   WalletCards,
@@ -26,9 +27,10 @@ import { LoginRequiredCard } from "@/components/auth/LoginRequiredCard";
 import { getRoleLabel, isOperatorRole } from "@/lib/role-ui";
 
 const learnerMenuItems = [
+  { icon: Sparkles, label: "내 학습 프로필", href: "/mypage/profile" },
   { icon: Baby, label: "자녀 관리", href: "/mypage/children" },
   { icon: BookOpen, label: "수강 내역", href: "/mypage/enrollments" },
-  { icon: CreditCard, label: "결제 내역", href: "/mypage/payments" },
+  { icon: CreditCard, label: "원비 납부·관리", href: "/mypage/payments" },
   { icon: BarChart3, label: "교육비 리포트", href: "/mypage/report" },
   { icon: Settings, label: "설정", href: "/mypage/settings" },
 ];

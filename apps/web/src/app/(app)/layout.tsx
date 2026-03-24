@@ -1,12 +1,12 @@
 import { BottomNav } from "@/components/ui/BottomNav";
-import { Sidebar } from "@/components/navigation/Sidebar";
+import { SidebarSwitch } from "@/components/navigation/SidebarSwitch";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-background">
       {/* 데스크탑: 사이드바 레이아웃 */}
       <div className="hidden lg:flex lg:h-screen lg:overflow-hidden">
-        <Sidebar />
+        <SidebarSwitch />
         <main className="flex-1 overflow-y-auto">
           {children}
         </main>

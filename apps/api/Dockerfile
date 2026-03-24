@@ -4,7 +4,7 @@ WORKDIR /app
 
 # ── Dependencies ──
 FROM base AS deps
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json tsconfig.base.json ./
 COPY apps/api/package.json apps/api/
 COPY packages/shared/package.json packages/shared/
 RUN pnpm install --frozen-lockfile
@@ -18,7 +18,6 @@ RUN pnpm --filter @edupick/api exec prisma generate
 FROM prisma AS build
 COPY apps/api apps/api
 COPY packages/shared packages/shared
-COPY tsconfig.base.json ./
 RUN pnpm --filter @edupick/api build
 
 # ── Production ──
